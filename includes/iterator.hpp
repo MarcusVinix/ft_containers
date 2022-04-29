@@ -1,0 +1,75 @@
+#ifndef ITERATOR_HPP
+# define ITERATOR_HPP
+
+namespace ft {
+
+	/**
+	 * Iterator Tags
+	 */
+	/// Marking input iterators.
+	struct input_iterator_tag { };
+
+	/// Marking output iterators.
+	struct output_iterator_tag { };
+
+	/// Forward iterators support a superset of input iterator operations.
+	struct forward_iterator_tag : public input_iterator_tag { };
+
+	/// Bidirectional iterators support a superset of forward iterator operations.
+	struct bidirectional_iterator_tag : public forward_iterator_tag { };
+
+	/// Ramdom-access iterators support a superset of bidirectional iterator operations.
+	struct random_access_iterator_tag : public bidirectional_iterator_tag { }; 
+
+	/**
+	 * Iterator base class 
+	 */
+	template <class Category, class T, class Distance = ptrdiff_t, class Pointer = T*, class Reference = T&>
+	struct iterator {
+		typedef T			value_type;
+		typedef Distance	difference_type;
+		typedef Pointer		pointer;
+		typedef Reference	reference;
+		typedef Category	iterator_category;
+	};
+
+	/**
+	 * Iterator Traits
+	 */
+	template <typename Iterator>
+	struct iterator_traits {
+		typedef typename Iterator::iterator_category	iterator_category;
+		typedef typename Iterator::value_type			value_type;
+		typedef typename Iterator::difference_type		difference_type;
+		typedef typename Iterator::pointer				pointer;
+		typedef typename Iterator::reference			reference;
+
+	};
+
+	/**
+	 * Iterator Traits specialization for pointer types.
+	 */
+	template <typename T>
+	struct iterator_traits<T*> {
+		typedef random_access_iterator_tag	iterator_category;
+		typedef T							value_type;
+		typedef std::ptrdiff_t					difference_type;
+		typedef T*							pointer;
+		typedef T&							reference;
+	};
+
+	/**
+	 * Iterator Traits specialization for const pointer types.
+	 */
+	template <typename T>
+	struct iterator_traits<const T*> {
+		typedef random_access_iterator_tag	iterator_category;
+		typedef T							value_type;
+		typedef std::ptrdiff_t					difference_type;
+		typedef const T*					pointer;
+		typedef const T&					reference;
+	};
+
+}
+
+#endif
