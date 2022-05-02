@@ -17,7 +17,7 @@ namespace ft
 		protected:
 			Iterator				current;
 
-			typedef iterator_traits	_traits_type;
+			typedef iterator_traits<Iterator>	_traits_type;
 		
 		public:
 
@@ -29,12 +29,14 @@ namespace ft
 			typedef typename _traits_type::reference			reference;
 
 			/**
-			 * Reverse Iterator Members Functions and overloads 
+			 * Reverse Iterator 
+			 * Members Functions and overloads
+			 * Constructors, base, operator( *, +, ++,, +=, -, --, -=, ->, [])
 			 */
-			reverse_iterator( void ) : current( void ) { }
+			reverse_iterator( void ) : current( ) { }
 			explicit reverse_iterator( iterator_type it ) : current( it ) { }
 			template<typename Iter>
-			reverse_iterator( const reverse_iterator<Iter> & rev_it ) : current( rev_i.current ) { }
+			reverse_iterator( const reverse_iterator<Iter> & rev_it ) : current( rev_it.current ) { }
 
 			iterator_type base( void ) const { return current; }
 
@@ -91,10 +93,12 @@ namespace ft
 				return *( *this + n );
 			}
 
-	}
+	};
 
 	/**
-	 * Reverse Iterator relational operators overload
+	 * Reverse Iterator
+	 * Non members functions and relational operatorsoverload
+	 * (+, -, ==, !=, <, <=,, > >=)
 	 */
 	template<typename Iterator>
 	reverse_iterator<Iterator> operator+( typename reverse_iterator<Iterator>::difference_type n,
@@ -104,7 +108,7 @@ namespace ft
 
 	template<typename Iterator>
 	typename reverse_iterator<Iterator>::difference_type operator-( const reverse_iterator<Iterator>& lhs,
-																	const reverse_iterator<Iterator>& rhl) {
+																	const reverse_iterator<Iterator>& rhs) {
 		return ( rhs.base() - lhs.base() );
 	}
 
