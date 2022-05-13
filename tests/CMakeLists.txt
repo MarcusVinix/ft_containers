@@ -14,7 +14,7 @@ target_link_libraries(
 	gtest_main )
 
 target_include_directories(test PUBLIC 
-${CMAKE_CURRENT_SOURCE_DIR}/includes
+${CMAKE_CURRENT_SOURCE_DIR}/../includes
 ${CMAKE_CURRENT_SOURCE_DIR}/googletest)
 
 include(GoogleTest)

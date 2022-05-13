@@ -1,3 +1,11 @@
 .vscode
 main
 a.out
+build/
+CMakeFiles/
+lib/
+cmake_install.cmake
+CMakeCache.txt
+test
+test[1]_include.cmake
+test[1]_tests.cmake
