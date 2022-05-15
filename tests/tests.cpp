@@ -167,3 +167,70 @@ TEST(TestVectorIterator, TestVectorIteratorREnd) {
 	for (int i = 0; i < 5; i++, --rit2)
 		EXPECT_EQ(*(rit2 - 1), *(it2 + i));
 }
+
+TEST(TestVectorCapacity, TestVectorSize) {
+	vector<int> vec1;
+	EXPECT_EQ(vec1.size(), 0);
+
+	int array1[] = {1, 2, 3, 4, 5};
+	vector<int> vec2(array1, array1 + 5);
+	EXPECT_EQ(vec2.size(), 5);
+
+	vector<int> vec3(vec2);
+	EXPECT_EQ(vec3.size(), 5);
+}
+
+TEST(TestVectorCapacity, TestVectorMaxSize) {
+	std::allocator<int> alloc;
+	vector<int> vec(alloc);
+	EXPECT_EQ(vec.max_size(), alloc.max_size());
+}
+
+TEST(TestVectorCapacity, TestVectorResize) {
+	vector<int>	vec;
+	int array[] = { 1, 2, 3, 4, 5, 100, 100, 100, 0, 0, 0, 0 };
+
+	for (int i = 1; i < 10; i++)
+		vec.push_back(i);
+	vec.resize(5);
+	vec.resize(8, 100);
+	vec.resize(12);
+	int i = 0;
+	for (int_iterator it = vec.begin(); it != vec.end(); it++, i++)
+		EXPECT_EQ(*it, array[i]);
+}
+
+TEST(TestVectorCapacity, TestVectorCapacity) {
+	vector<int> vec1;
+	EXPECT_EQ(vec1.capacity(), default_capacity);
+
+	vector<int> vec2(5);
+	EXPECT_EQ(vec2.capacity(), 5);
+
+	vector<int> vec3(10, 5);
+	EXPECT_EQ(vec3.capacity(), 10);
+}
+
+TEST(TestVectorCapacity, TestVectorEmpty) {
+	vector<int> vec;
+	EXPECT_TRUE(vec.empty());
+
+	vector<int> vec2(5);
+	EXPECT_FALSE(vec2.empty());
+
+	vector<int> vec3(1, 10);
+	EXPECT_FALSE(vec3.empty());
+}
+
+TEST(TestVectorCapacity, TestVectorReserve) {
+	vector<int> vec;
+	EXPECT_EQ(vec.capacity(), default_capacity);
+
+	vec.reserve(5);
+	EXPECT_EQ(vec.capacity(), 5);
+
+	vector<int> vec2(10);
+	EXPECT_EQ(vec2.capacity(), 10);
+	vec2.reserve(5);
+	EXPECT_EQ(vec2.capacity(), 10);
+}
