@@ -179,34 +179,53 @@ namespace ft {
 		return ( rhs.base() - lhs.base() );
 	}
 
-	template<typename Iterator>
-	bool operator==( const random_access_iterator<Iterator> & lhs, const random_access_iterator<Iterator> & rhs ) {
+	template<typename Iterator1, typename Iterator2>
+	bool operator==( const random_access_iterator<Iterator1> & lhs, const random_access_iterator<Iterator2> & rhs ) {
 		return ( lhs.base() == rhs.base() );
 	}
 
-	template<typename Iterator>
-	bool operator!=( const random_access_iterator<Iterator> & lhs, const random_access_iterator<Iterator> & rhs ) {
+	template<typename Iterator1, typename Iterator2>
+	bool operator!=( const random_access_iterator<Iterator1> & lhs, const random_access_iterator<Iterator2> & rhs ) {
 		return ( lhs.base() != rhs.base() );
 	}
 
-	template<typename Iterator>
-	bool operator<( const random_access_iterator<Iterator> & lhs, const random_access_iterator<Iterator> & rhs ) {
+	template<typename Iterator1, typename Iterator2>
+	bool operator<( const random_access_iterator<Iterator1> & lhs, const random_access_iterator<Iterator2> & rhs ) {
 		return ( lhs.base() < rhs.base() );
 	}
 
-	template<typename Iterator>
-	bool operator<=( const random_access_iterator<Iterator> & lhs, const random_access_iterator<Iterator> & rhs ) {
+	template<typename Iterator1, typename Iterator2>
+	bool operator<=( const random_access_iterator<Iterator1> & lhs, const random_access_iterator<Iterator2> & rhs ) {
 		return ( lhs.base() <= rhs.base() );
 	}
 
-	template<typename Iterator>
-	bool operator>( const random_access_iterator<Iterator> & lhs, const random_access_iterator<Iterator> & rhs ) {
+	template<typename Iterator1, typename Iterator2>
+	bool operator>( const random_access_iterator<Iterator1> & lhs, const random_access_iterator<Iterator2> & rhs ) {
 		return ( lhs.base() > rhs.base() );
 	}
 
-	template<typename Iterator>
-	bool operator>=( const random_access_iterator<Iterator> & lhs, const random_access_iterator<Iterator> & rhs ) {
+	template<typename Iterator1, typename Iterator2>
+	bool operator>=( const random_access_iterator<Iterator1> & lhs, const random_access_iterator<Iterator2> & rhs ) {
 		return ( lhs.base() >= rhs.base() );
+	}
+
+	/**
+	 * Iterator operations
+	 * advance and distance
+	 */
+	template<typename InputIterator, typename Distance>
+	void advance(InputIterator & it, Distance n) {
+		it += n;
+	}
+
+	template<typename InputIterator>
+	typename iterator_traits<InputIterator>::difference_type distance(InputIterator first, InputIterator last) {
+		typename ft::iterator_traits<InputIterator>::difference_type result = 0;
+		while (first != last) {
+			++result;
+			++first;
+		}
+		return result;
 	}
 
 } // namespace ft
