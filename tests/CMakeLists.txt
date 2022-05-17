@@ -6,7 +6,7 @@ set(CMAKE_CXX_FLAGS_DEBUG_INIT "-Wall -Wextra -Werror -std=c++98 -g")
 project(testCPP VERSION 1.0)
 add_subdirectory(googletest)
 add_executable(test
-tests.cpp
+tests_vector.cpp
 )
 
 target_link_libraries( 

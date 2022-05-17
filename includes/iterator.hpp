@@ -67,7 +67,7 @@ namespace ft {
 	struct iterator_traits<const T*> {
 		typedef random_access_iterator_tag	iterator_category;
 		typedef T							value_type;
-		typedef std::ptrdiff_t					difference_type;
+		typedef std::ptrdiff_t				difference_type;
 		typedef const T*					pointer;
 		typedef const T&					reference;
 	};
@@ -85,9 +85,9 @@ namespace ft {
 						typename iterator_traits<Iterator>::reference>
 	{
 		protected:
-			Iterator				current;
+			Iterator											current;
 
-			typedef iterator_traits<Iterator>	_traits_type;
+			typedef 		iterator_traits<Iterator>			_traits_type;
 		
 		public:
 
@@ -106,7 +106,7 @@ namespace ft {
 			random_access_iterator( void ) : current( ) { }
 			explicit random_access_iterator( iterator_type it ) : current( it ) { }
 			template<typename Iter>
-			random_access_iterator( const random_access_iterator<Iter> & it ) : current( it.current ) { }
+			random_access_iterator( const random_access_iterator<Iter> & it ) : current( it.base() ) { }
 
 			iterator_type base( void ) const { return current; }
 
