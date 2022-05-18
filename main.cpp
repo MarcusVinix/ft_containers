@@ -1,6 +1,6 @@
 #include <reverse_iterator.hpp>     // std::reverse_iterator
 #include <iterator.hpp>
-#include <types_traits.hpp>
+#include <type_traits.hpp>
 #include <algorithm.hpp>
 #include <vector.hpp>
 

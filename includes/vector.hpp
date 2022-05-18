@@ -4,7 +4,7 @@
 #include <memory>
 #include "iterator.hpp"
 #include "reverse_iterator.hpp"
-#include "types_traits.hpp"
+#include "type_traits.hpp"
 #include "algorithm.hpp"
 
 namespace ft

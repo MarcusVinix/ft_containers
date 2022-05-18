@@ -7,6 +7,9 @@ project(testCPP VERSION 1.0)
 add_subdirectory(googletest)
 add_executable(test
 tests_vector.cpp
+tests_type_traits.cpp
+tests_algorithm.cpp
+tests_utility.cpp
 )
 
 target_link_libraries( 
