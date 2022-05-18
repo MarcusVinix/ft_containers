@@ -10,6 +10,8 @@ tests_vector.cpp
 tests_type_traits.cpp
 tests_algorithm.cpp
 tests_utility.cpp
+tests_performanceSTL.cpp
+tests_performanceFt.cpp
 )
 
 target_link_libraries( 

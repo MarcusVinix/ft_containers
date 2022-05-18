@@ -22,8 +22,8 @@ namespace ft
 			typedef typename allocator_type::const_reference				const_reference;
 			typedef typename allocator_type::pointer						pointer;
 			typedef typename allocator_type::const_pointer					const_pointer;
-			typedef ft::random_access_iterator<pointer>					iterator;
-			typedef ft::random_access_iterator<const_pointer>			const_iterator;
+			typedef ft::random_access_iterator<pointer>						iterator;
+			typedef ft::random_access_iterator<const_pointer>				const_iterator;
 			typedef ft::reverse_iterator<iterator>							reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator>					const_reverse_iterator;
 			typedef std::ptrdiff_t											difference_type;
@@ -160,36 +160,34 @@ namespace ft
 			void reserve( size_type n ) {
 				if (n > max_size())
 					throw std::length_error("ft::vector::reserve:: n is greater then max_size.");
-				if (n > this->_capacity) {
+				if (n > _capacity) {
 					this->_capacity = n;
 					pointer tmp = this->_alloc.allocate(this->_capacity);
 					for (size_type i = 0; i < this->_size; i++)
-						this->_alloc.construct(tmp + i, this->_vec[i]);
-					for (size_type i = 0; i < this->_size; i++)
-						this->_alloc.destroy(this->_vec + i);
+						this->_alloc.construct(tmp + i, *(this->_vec + i));
 					this->_alloc.deallocate(this->_vec, this->_size);
 					this->_vec = tmp;
 				}
 			}
 
 			reference operator[]( size_type n ) {
-				return this->_vec[n];
+				return *(this->_vec + n);
 			}
 
 			const_reference operator[]( size_type n ) const {
-				return this->_vec[n];
+				return *(this->_vec + n);
 			}
 
 			reference at( size_type n ) {
 				if (n >= this->_size)
 					throw std::out_of_range("ft::vector::at is out of range");
-				return this->_vec[n];
+				return *(this->_vec + n);
 			}
 
 			const_reference at( size_type n ) const {
 				if (n >= this->_size)
 					throw std::out_of_range("ft::vector::at is out of range");
-				return this->_vec[n];
+				return *(this->_vec + n);
 			}
 
 			reference front( void ) {
@@ -239,23 +237,23 @@ namespace ft
 			}
 
 			void push_back( const value_type & val ) {
-				if (this->_capacity < this->_size + 1)
-					reserve(this->_size + 2);
-				this->_alloc.construct(&this->_vec[this->_size], val);
+				if (this->_capacity == this->_size)
+					reserve(this->_capacity ? this->_capacity * 2 : 10);
+				this->_alloc.construct(&(*this->end()), val);
 				this->_size++;
 			}
 
 			void pop_back( void ) {
 				if (this->_size <= 0)
 					return ;
-				this->_alloc.destroy(this->_vec + this->_size - 1);
+				this->_alloc.destroy(&(*this->end()));
 				this->_size--;
 			}
 
 			iterator insert( iterator position, const value_type & val ) {
 				size_type index = position - this->begin();
 				if (this->_size == this->_capacity)
-					reserve(this->_capacity + 2);
+					reserve(this->_capacity ? this->_capacity * 2 : 1);
 				for (size_type i = this->_size; i > index; i--)
 					this->_alloc.construct(&(*this->begin()) + i, *(begin() + i - 1));
 				this->_alloc.construct(&(*this->begin()) + index, val);
@@ -267,7 +265,7 @@ namespace ft
 				if (n) {
 					size_type index = position - this->begin();
 					if (this->_size + n > this->_capacity)
-						reserve(this->_size + n + 2);
+						reserve(this->_capacity ? (this->_size + n) * 2 : n);
 					while (n--)
 						insert(this->begin() + index, val);
 					this->_size += n;
@@ -280,7 +278,7 @@ namespace ft
 				size_type index = position - this->begin();
 				size_type n = ft::distance(first, last);
 				if (this->_size + n > this->_capacity)
-					reserve(this->_size + n + 2);
+					reserve(this->_capacity ? (this->_size + n) * 2 : n);
 				for (size_type i = this->_size; i > index; i--)
 					this->_alloc.construct(&(*this->begin()) + i + n - 1, *(begin() + i - 1));
 				for (size_type  i = 0; i < n; i++)
@@ -301,10 +299,11 @@ namespace ft
 
 			iterator erase( iterator first, iterator last ) {
 				size_type n = ft::distance(first, last);
-				for (iterator it = first; it != last; it++)
-					this->_alloc.destroy(&(*it));
-				for (iterator it = last; it != this->end(); it++)
-					this->_alloc.construct(&(*(it - n)), *it);
+				for (size_type i = 0; (last + i) != this->end(); i++)
+				{
+					this->_alloc.destroy(&(*(first + i)));
+					this->_alloc.construct(&(*(first + i)), *(last + i));
+				}
 				this->_size -= n;
 				return first;
 			}

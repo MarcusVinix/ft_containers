@@ -123,7 +123,7 @@ namespace ft {
 				return *this;
 			}
 
-			random_access_iterator & operator++( int ) {
+			random_access_iterator operator++( int ) {
 				current++;
 				return *this;
 			}
@@ -133,7 +133,7 @@ namespace ft {
 				return *this;
 			}
 
-			random_access_iterator & operator--( int ) {
+			random_access_iterator operator--( int ) {
 				current--;
 				return *this;
 			}
@@ -157,7 +157,7 @@ namespace ft {
 			}
 
 			reference operator[]( difference_type n ) const {
-				return current[n];
+				return *(current + n);
 			}
 	};
 
