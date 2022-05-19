@@ -12,6 +12,7 @@ tests_algorithm.cpp
 tests_utility.cpp
 tests_performanceSTL.cpp
 tests_performanceFt.cpp
+tests_stack.cpp
 )
 
 target_link_libraries( 

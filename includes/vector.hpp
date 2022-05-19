@@ -265,7 +265,7 @@ namespace ft
 				if (n) {
 					size_type index = position - this->begin();
 					if (this->_size + n > this->_capacity)
-						reserve(this->_capacity ? (this->_size + n) * 2 : n);
+						reserve(this->_capacity ? this->_capacity * 2 : n + 1);
 					while (n--)
 						insert(this->begin() + index, val);
 					this->_size += n;
@@ -278,7 +278,7 @@ namespace ft
 				size_type index = position - this->begin();
 				size_type n = ft::distance(first, last);
 				if (this->_size + n > this->_capacity)
-					reserve(this->_capacity ? (this->_size + n) * 2 : n);
+					reserve(this->_capacity ? this->_capacity * 2 : n + 1);
 				for (size_type i = this->_size; i > index; i--)
 					this->_alloc.construct(&(*this->begin()) + i + n - 1, *(begin() + i - 1));
 				for (size_type  i = 0; i < n; i++)

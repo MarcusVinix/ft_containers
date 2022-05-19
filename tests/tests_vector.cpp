@@ -6,17 +6,15 @@
  * Test of vector container
  */
 
-using namespace std;
-
 ft::vector<int>::size_type default_capacity = 0;
 ft::vector<int>::size_type five_capacity = 5;
 
 typedef ft::vector<int>::iterator int_iterator;
-typedef ft::vector<string>::iterator string_iterator;
+typedef ft::vector<std::string>::iterator string_iterator;
 typedef ft::vector<int>::const_iterator int_const_iterator;
-typedef ft::vector<string>::const_iterator string_const_iterator;
+typedef ft::vector<std::string>::const_iterator string_const_iterator;
 typedef ft::vector<int>::reverse_iterator int_riterator;
-typedef ft::vector<string>::reverse_iterator string_riterator;
+typedef ft::vector<std::string>::reverse_iterator string_riterator;
 
 TEST(TestVectorConstructors, TestVectorDefaultConstructor) {
 	ft::vector<int> vec1;
@@ -30,7 +28,7 @@ TEST(TestVectorConstructors, TestVectorDefaultConstructor) {
 
 TEST(TestVectorConstructors, TestVectorFillConstructor) {
 	ft::vector<int> vec1(5);
-	ft::vector<string> vec2(5, "fill");
+	ft::vector<std::string> vec2(5, "fill");
 
 	EXPECT_EQ(vec1.size(), 5);
 	EXPECT_EQ(vec1.capacity(), 5);
