@@ -13,6 +13,7 @@ tests_utility.cpp
 tests_performanceSTL.cpp
 tests_performanceFt.cpp
 tests_stack.cpp
+tests_rb_tree.cpp
 )
 
 target_link_libraries( 
@@ -21,6 +22,8 @@ target_link_libraries(
 
 target_include_directories(test PUBLIC 
 ${CMAKE_CURRENT_SOURCE_DIR}/../includes
+${CMAKE_CURRENT_SOURCE_DIR}/../iterators
+${CMAKE_CURRENT_SOURCE_DIR}/../containers
 ${CMAKE_CURRENT_SOURCE_DIR}/googletest)
 
 include(GoogleTest)

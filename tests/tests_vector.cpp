@@ -427,9 +427,9 @@ TEST(TestVectorAllocator, TestVectorGetAllocator) {
 
 TEST(TestVectorNonMemberFunctionOverloads, TestVectorRelationalOperators) {
 	ft::vector<int> vec1(3, 100);
-	ft::vector<int> vec2(3, 100);
+	ft::vector<int> const vec2(3, 100);
 	ft::vector<int> vec3(3, 200);
-	ft::vector<int> vec4(5, 100);
+	ft::vector<int> const vec4(5, 100);
 
 	EXPECT_TRUE(vec1 == vec2);
 	EXPECT_FALSE(vec1 == vec3);
