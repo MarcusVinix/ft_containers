@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <vector.hpp>
 #include <stack.hpp>
+#include <map.hpp>
 
 const int count = 100000;
 
@@ -21,3 +22,13 @@ TEST(TestPerformanceStackFt, TestPerformanceStackFt) {
 	for (int i = 0; i < count; i++)
 		stc.pop();
 }
+
+TEST(TestPerformanceMapFt, TestPerformanceMapFt) {
+	ft::map<int, int> map;
+
+	for(int i = 0; i < count; i++)
+		map[i] = i;
+	ft::map<int, int>::iterator it = map.begin();
+	map.erase(it, map.end());
+}
+

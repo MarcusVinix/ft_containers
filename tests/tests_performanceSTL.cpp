@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include <stack>
+#include <map>
 
 const int count = 100000;
 
@@ -21,4 +22,13 @@ TEST(TestPerformanceStackSTL, TestPerformanceStackSTL) {
 		stc.push(i);
 	for (int i = 0; i < count; i++)
 		stc.pop();
+}
+
+TEST(TestPerformanceMapStl, TestPerformanceMapStl) {
+	std::map<int, int> map;
+
+	for(int i = 0; i < count; i++)
+		map[i] = i;
+	std::map<int, int>::iterator it = map.begin();
+	map.erase(it, map.end());
 }
