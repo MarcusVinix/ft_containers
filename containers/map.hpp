@@ -99,11 +99,11 @@ namespace ft
 
 			//capacity
 
-			bool empty( void ) { return this->_tree.empty(); }
+			bool empty( void ) const { return this->_tree.empty(); }
 
-			size_type size( void ) { return this->_tree.size(); }
+			size_type size( void ) const { return this->_tree.size(); }
 
-			size_type max_size( void ) { return this->_tree.max_size(); }
+			size_type max_size( void ) const { return this->_tree.max_size(); }
 
 			//Element access
 
@@ -204,7 +204,7 @@ namespace ft
 
 	template<class Key, class T, class Compare, class Alloc>
 	bool operator==( const ft::map<Key, T, Compare, Alloc> & lhs, const ft::map<Key, T, Compare, Alloc> & rhs ) {
-		return lhs.size() == rhs.size() && ft::equal(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+		return lhs.size() == rhs.size() && ft::equal(lhs.begin(), lhs.end(), rhs.begin());
 	}
 	
 	template<class Key, class T, class Compare, class Alloc>
@@ -233,7 +233,7 @@ namespace ft
 	}
 	
 	template<class Key, class T, class Compare, class Alloc>
-	void swap( const ft::map<Key, T, Compare, Alloc> & lhs, const ft::map<Key, T, Compare, Alloc> & rhs ) {
+	void swap( ft::map<Key, T, Compare, Alloc> & lhs, ft::map<Key, T, Compare, Alloc> & rhs ) {
 		lhs.swap(rhs);
 	}
 
