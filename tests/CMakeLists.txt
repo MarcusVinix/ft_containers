@@ -14,6 +14,7 @@ tests_performanceSTL.cpp
 tests_performanceFt.cpp
 tests_stack.cpp
 tests_rb_tree.cpp
+tests_map.cpp
 )
 
 target_link_libraries( 
