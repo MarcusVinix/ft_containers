@@ -15,6 +15,8 @@ tests_rb_tree.cpp
 tests_map.cpp
 tests_performanceSTL.cpp
 tests_performanceFt.cpp
+tests_iterator.cpp
+tests_reverse_iterator.cpp
 )
 
 target_link_libraries( 
