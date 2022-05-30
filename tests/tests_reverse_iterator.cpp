@@ -2,6 +2,7 @@
 #include <iterator.hpp>
 #include <reverse_iterator.hpp>
 #include <vector.hpp>
+#include <vector>
 
 TEST(TestReverseIterator, TestReverseIteratorIncrementAndDecrement) {
 	int ar[] = {1, 2, 3, 4, 5};
@@ -51,25 +52,25 @@ TEST(TestReverseIterator, TestReverseIteratorRelationalOperator) {
 	ft::vector<int> const cvec(ar, ar + 5);
 	ft::vector<int>::const_reverse_iterator cit = cvec.rbegin();
 
-	int ar2[] = {1, 2, 3, 4, 5, 6};
+	int ar2[] = {10, 2, 3, 4, 5, 6};
 	ft::vector<int> const cvec2(ar2, ar2 + 6);
 	ft::vector<int>::const_reverse_iterator cit2 = cvec2.rbegin();
 
-	EXPECT_FALSE(it == cit);
-	EXPECT_FALSE(it == cit2);
+	EXPECT_TRUE(*it == *cit);
+	EXPECT_FALSE(*it == *cit2);
 	
-	EXPECT_TRUE(it != cit);
-	EXPECT_TRUE(it != cit2);
+	EXPECT_FALSE(*it != *cit);
+	EXPECT_TRUE(*it != *cit2);
 
-	EXPECT_TRUE(it > cit);
-	EXPECT_TRUE(it > cit2);
+	EXPECT_FALSE(*it > *cit);
+	EXPECT_FALSE(*it > *cit2);
 	
-	EXPECT_FALSE(it < cit);
-	EXPECT_FALSE(it < cit2);
+	EXPECT_FALSE(*it < *cit);
+	EXPECT_TRUE(*it < *cit2);
 	
-	EXPECT_FALSE(it <= cit);
-	EXPECT_FALSE(it <= cit2);
+	EXPECT_TRUE(*it <= *cit);
+	EXPECT_TRUE(*it <= *cit2);
 	
-	EXPECT_TRUE(it >= cit);
-	EXPECT_TRUE(it >= cit2);
+	EXPECT_TRUE(*it >= *cit);
+	EXPECT_FALSE(*it >= *cit2);
 }

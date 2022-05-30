@@ -50,25 +50,25 @@ TEST(TestIterator, TestIteratorRelationalOperator) {
 	ft::vector<int> const cvec(ar, ar + 5);
 	ft::vector<int>::const_iterator cit = cvec.begin();
 
-	int ar2[] = {1, 2, 3, 4, 5, 6};
+	int ar2[] = {10, 2, 3, 4, 5, 6};
 	ft::vector<int> const cvec2(ar2, ar2 + 6);
 	ft::vector<int>::const_iterator cit2 = cvec2.begin();
 
-	EXPECT_FALSE(it == cit);
-	EXPECT_FALSE(it == cit2);
+	EXPECT_TRUE(*it == *cit);
+	EXPECT_FALSE(*it == *cit2);
 	
-	EXPECT_TRUE(it != cit);
-	EXPECT_TRUE(it != cit2);
+	EXPECT_FALSE(*it != *cit);
+	EXPECT_TRUE(*it != *cit2);
 
-	EXPECT_FALSE(it > cit);
-	EXPECT_FALSE(it > cit2);
+	EXPECT_FALSE(*it > *cit);
+	EXPECT_FALSE(*it > *cit2);
 	
-	EXPECT_TRUE(it < cit);
-	EXPECT_TRUE(it < cit2);
+	EXPECT_FALSE(*it < *cit);
+	EXPECT_TRUE(*it < *cit2);
 	
-	EXPECT_TRUE(it <= cit);
-	EXPECT_TRUE(it <= cit2);
+	EXPECT_TRUE(*it <= *cit);
+	EXPECT_TRUE(*it <= *cit2);
 	
-	EXPECT_FALSE(it >= cit);
-	EXPECT_FALSE(it >= cit2);
+	EXPECT_TRUE(*it >= *cit);
+	EXPECT_FALSE(*it >= *cit2);
 }
