@@ -33,7 +33,18 @@ namespace ft {
 		}
 	};
 
+	template<class T>
+	struct _Identity : public unary_function<T, T> {
+		T & operator()(T & x) const {
+			return x;
+		}
+		const T & operator()(const T & x) const {
+			return x;
+		}
+	};
 
+	template<class T>
+	struct _Identity<const T> : _Identity<T> { };
 
 }
 
