@@ -1,7 +1,6 @@
 .vscode
 main
 a.out
-build/
 CMakeFiles/
 lib/
 cmake_install.cmake
