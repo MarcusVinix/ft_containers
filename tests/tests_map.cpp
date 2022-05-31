@@ -259,7 +259,7 @@ TEST_F(TestMap, TestMapValueComp) {
 	ft::map<char, int>::value_compare valueComp = MyMap.value_comp();
 
 	ft::pair<const char, int> highest = ft::make_pair('e', 50);
-	for (; itb != ite; itb++);
+	for (; itb != ite; itb++)
 		EXPECT_TRUE(valueComp(*itb, highest));
 }
 
