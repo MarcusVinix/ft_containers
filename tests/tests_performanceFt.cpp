@@ -32,10 +32,28 @@ TEST(TestPerformanceMapFt, TestPerformanceMapFt) {
 	map.clear();
 }
 
+TEST(TestPerformanceMapFt, TestPerformanceMapFtErase) {
+	ft::map<int, int> map;
+
+	for(int i = 0; i < count; i++)
+		map[i] = i;
+	ft::map<int, int>::iterator it = map.begin();
+	map.erase(it, map.end());
+}
+
 TEST(TestPerformanceSetFt, TestPerformanceSetFt) {
 	ft::set<int> set;
 	for (int i = 0; i < count; i++)
 		set.insert(i);
 	set.clear();
 }
+
+TEST(TestPerformanceSetFt, TestPerformanceSetFtErase) {
+	ft::set<int> set;
+	for (int i = 0; i < count; i++)
+		set.insert(i);
+	ft::set<int>::iterator it = set.begin();
+	set.erase(it, set.end());
+}
+
 

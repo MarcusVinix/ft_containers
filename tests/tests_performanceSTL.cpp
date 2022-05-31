@@ -33,9 +33,26 @@ TEST(TestPerformanceMapStl, TestPerformanceMapStl) {
 	map.clear();
 }
 
+TEST(TestPerformanceMapStl, TestPerformanceMapStlErase) {
+	std::map<int, int> map;
+
+	for(int i = 0; i < count; i++)
+		map[i] = i;
+	std::map<int, int>::iterator it = map.begin();
+	map.erase(it, map.end());
+}
+
 TEST(TestPerformanceSetStl, TestPerformanceSetStl) {
 	std::set<int> set;
 	for (int i = 0; i < count; i++)
 		set.insert(i);
 	set.clear();
+}
+
+TEST(TestPerformanceSetStl, TestPerformanceSetStlErase) {
+	std::set<int> set;
+	for (int i = 0; i < count; i++)
+		set.insert(i);
+	std::set<int>::iterator it = set.begin();
+	set.erase(it, set.end());
 }
