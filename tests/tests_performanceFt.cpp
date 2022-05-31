@@ -2,6 +2,7 @@
 #include <vector.hpp>
 #include <stack.hpp>
 #include <map.hpp>
+#include <set.hpp>
 
 const int count = 100000;
 
@@ -28,7 +29,13 @@ TEST(TestPerformanceMapFt, TestPerformanceMapFt) {
 
 	for(int i = 0; i < count; i++)
 		map[i] = i;
-	ft::map<int, int>::iterator it = map.begin();
-	map.erase(it, map.end());
+	map.clear();
+}
+
+TEST(TestPerformanceSetFt, TestPerformanceSetFt) {
+	ft::set<int> set;
+	for (int i = 0; i < count; i++)
+		set.insert(i);
+	set.clear();
 }
 

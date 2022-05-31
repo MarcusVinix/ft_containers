@@ -2,9 +2,6 @@
 #include <vector.hpp>
 #include <stack.hpp>
 #include <deque>
-// #include <stack>
-
-// using namespace std;
 
 TEST(TestStackConstructor, TestStackConstructor) {
 	ft::vector<int> vec(5, 200);

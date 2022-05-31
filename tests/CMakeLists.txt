@@ -13,11 +13,11 @@ tests_utility.cpp
 tests_stack.cpp
 tests_rb_tree.cpp
 tests_map.cpp
-tests_performanceSTL.cpp
-tests_performanceFt.cpp
 tests_iterator.cpp
 tests_reverse_iterator.cpp
 tests_set.cpp
+tests_performanceSTL.cpp
+tests_performanceFt.cpp
 )
 
 target_link_libraries( 
