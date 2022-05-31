@@ -24,7 +24,7 @@ tests_vector.cpp
 tests_stack.cpp
 tests_map.cpp
 tests_set.cpp
-tests_performanceFT.cpp
+tests_performanceFt.cpp
 )
 target_link_libraries(TestFTContainers gtest_main)
 target_include_directories(TestFTContainers PUBLIC ${Header})
