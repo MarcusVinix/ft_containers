@@ -9,7 +9,8 @@ namespace ft
 	template< class T, class Container = ft::vector<T> >
 	class stack {
 
-		private:
+		protected:
+
 			Container c;
 		
 		public:
@@ -18,12 +19,6 @@ namespace ft
 			typedef typename Container::const_reference	const_reference;
 			typedef typename Container::size_type		size_type;
 			typedef Container							container_type;
-
-			template<typename T1, typename Container1>
-			friend bool operator==( const stack<T1, Container1> & lhs, const stack<T1, Container1> & rhs );
-
-			template<typename T1, typename Container1>
-			friend bool operator<( const stack<T1, Container1> & lhs, const stack<T1, Container1> & rhs );
 
 			explicit stack( const container_type & ctnr = container_type() ) : c( ctnr ) { }
 

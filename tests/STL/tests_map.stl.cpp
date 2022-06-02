@@ -201,6 +201,7 @@ TEST_F(TestMap, TestMapErase) {
 	MyMap.insert(std::pair<char, int>('h', 80));
 	EXPECT_EQ(MyMap.size(), 6);
 
+	std::map<char, int> map(MyMap);
 	std::map<char, int>::iterator it = MyMap.begin();
 	std::map<char, int>::iterator it2 = MyMap.find('h');
 	MyMap.erase(it, it2);
@@ -210,6 +211,17 @@ TEST_F(TestMap, TestMapErase) {
 	MyMap.erase('z');
 	MyMap.erase('y');
 	EXPECT_EQ(MyMap.size(), 2);
+
+	it = map.begin();
+	map.erase('f');
+    map.erase('g');
+    EXPECT_EQ(it->first, 'c');
+    it++;
+    EXPECT_EQ(it->first, 'd');
+    it++;
+    EXPECT_EQ(it->first, 'e');
+    it++;
+    EXPECT_EQ(it->first, 'h');
 }
 
 TEST_F(TestMap, TestMapSwap) {

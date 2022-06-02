@@ -1,27 +1,27 @@
 #include <gtest/gtest.h>
-#include <vector.hpp>
-#include <stack.hpp>
+#include <vector>
+#include <stack>
 #include <deque>
 
 TEST(TestStackConstructor, TestStackConstructor) {
-	ft::vector<int> vec(5, 200);
+	std::vector<int> vec(5, 200);
 	std::deque<int> deq(10, 300);
-	ft::stack<int> stc1;
-	ft::stack<int> stc2(vec);
-	ft::stack<int, ft::vector<int>> stc3(vec);
-	ft::stack<int, std::deque<int>> stc4(deq);
+	std::stack<int> stc1;
+	std::stack<int> stc2(deq);
+	std::stack<int, std::vector<int>> stc3(vec);
+	std::stack<int, std::deque<int>> stc4(deq);
 
 	EXPECT_EQ(stc1.size(), 0);
-	EXPECT_EQ(stc2.size(), 5);
+	EXPECT_EQ(stc2.size(), 10);
 	EXPECT_EQ(stc3.size(), 5);
 	EXPECT_EQ(stc4.size(), 10);
 }
 
 TEST(TestStackMemberFunctions, TestStackMemberFunctionsEmpty) {
-	ft::vector<int> vec(5, 200);
+	std::vector<int> vec(5, 200);
 	std::deque<int> deq(10, 300);
-	ft::stack<int, ft::vector<int>> stc1(vec);
-	ft::stack<int, std::deque<int>> stc2(deq);
+	std::stack<int, std::vector<int>> stc1(vec);
+	std::stack<int, std::deque<int>> stc2(deq);
 
 	EXPECT_FALSE(stc1.empty());
 	EXPECT_FALSE(stc2.empty());
@@ -34,16 +34,16 @@ TEST(TestStackMemberFunctions, TestStackMemberFunctionsEmpty) {
 }
 
 TEST(TestStackMemberFunctions, TestStackMemberFunctionsSize) {
-	ft::vector<int> vec(5, 200);
+	std::vector<int> vec(5, 200);
 	std::deque<int> deq(10, 300);
-	ft::stack<int> stc1;
-	ft::stack<int> stc2(vec);
-	ft::stack<int, ft::vector<int>> stc3(vec);
-	ft::stack<int, std::deque<int>> stc4(deq);
+	std::stack<int> stc1;
+	std::stack<int> stc2(deq);
+	std::stack<int, std::vector<int>> stc3(vec);
+	std::stack<int, std::deque<int>> stc4(deq);
 
 	EXPECT_EQ(stc1.size(), 0);
 	stc2.pop();
-	EXPECT_EQ(stc2.size(), 4);
+	EXPECT_EQ(stc2.size(), 9);
 	stc3.pop();
 	EXPECT_EQ(stc3.size(), 4);
 	stc4.push(11);
@@ -51,13 +51,13 @@ TEST(TestStackMemberFunctions, TestStackMemberFunctionsSize) {
 }
 
 TEST(TestStackMemberFunctions, TestStackMemberFunctionsTop) {
-	ft::stack<int, ft::vector<int>> vec;
+	std::stack<int, std::vector<int>> vec;
 
 	vec.push(10);
 	vec.push(20);
 	vec.push(30);
 
-	ft::stack<int, ft::vector<int>> const vec2(vec);
+	std::stack<int, std::vector<int>> const vec2(vec);
 	EXPECT_EQ(vec.top(), 30);
 	vec.top() -= 10;
 	EXPECT_EQ(vec.top(), 20);
@@ -71,8 +71,8 @@ TEST(TestStackMemberFunctions, TestStackMemberFunctionsTop) {
 }
 
 TEST(TestStackMemberFunctions, TestStackMemberFunctionsPushAndPop) {
-	ft::stack<int, ft::vector<int>> vec;
-	ft::stack<int, std::deque<int>> deq;
+	std::stack<int, std::vector<int>> vec;
+	std::stack<int, std::deque<int>> deq;
 
 	for (int i = 1; i < 11; i++) {
 		vec.push(i);
@@ -90,12 +90,12 @@ TEST(TestStackMemberFunctions, TestStackMemberFunctionsPushAndPop) {
 }
 
 TEST(TestStackNonMemberFunctions, TestStackNonMemberFunctionsRelationalOperators) {
-	ft::vector<int> vec(10, 20);
-	ft::vector<int> vec2(10, 20);
-	ft::vector<int> vec3(10, 30);
-	ft::stack<int, ft::vector<int>> stc1(vec);
-	ft::stack<int, ft::vector<int>> stc2(vec2);
-	ft::stack<int, ft::vector<int>> stc3(vec3);
+	std::vector<int> vec(10, 20);
+	std::vector<int> vec2(10, 20);
+	std::vector<int> vec3(10, 30);
+	std::stack<int, std::vector<int>> stc1(vec);
+	std::stack<int, std::vector<int>> stc2(vec2);
+	std::stack<int, std::vector<int>> stc3(vec3);
 
 	EXPECT_TRUE(vec == vec2);
 	EXPECT_FALSE(vec == vec3);
