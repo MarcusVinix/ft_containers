@@ -13,49 +13,38 @@ add_subdirectory(googletest)
 
 enable_testing()
 
-add_executable(TestIncludes
+add_executable(TestFTContainers
 tests_iterator.cpp
 tests_reverse_iterator.cpp
 tests_type_traits.cpp
 tests_algorithm.cpp
 tests_utility.cpp
 tests_rb_tree.cpp
+tests_vector.cpp
+tests_stack.cpp
+tests_map.cpp
+tests_set.cpp
+tests_performanceFt.cpp
 )
-target_link_libraries(TestIncludes gtest_main)
-target_include_directories(TestIncludes PUBLIC ${Header})
-add_test(NAME TestIncludes COMMAND TestIncludes)
+target_link_libraries(TestFTContainers gtest_main)
+target_include_directories(TestFTContainers PUBLIC ${Header})
+add_test(NAME TestFTContainers COMMAND TestFTContainers)
 
-add_executable(TestVector tests_vector.cpp)
-target_link_libraries(TestVector gtest_main)
-target_include_directories(TestVector PUBLIC ${Header})
-add_test(NAME TestVector COMMAND TestVector)
-
-add_executable(TestStack tests_stack.cpp)
-target_link_libraries(TestStack gtest_main)
-target_include_directories(TestStack PUBLIC ${Header})
-add_test(NAME TestStack COMMAND TestStack)
-
-add_executable(TestMap tests_map.cpp)
-target_link_libraries(TestMap gtest_main)
-target_include_directories(TestMap PUBLIC ${Header})
-add_test(NAME TestMap COMMAND TestMap)
-
-add_executable(TestSet tests_set.cpp)
-target_link_libraries(TestSet gtest_main)
-target_include_directories(TestSet PUBLIC ${Header})
-add_test(NAME TestSet COMMAND TestSet)
-
-add_executable(TestPerformanceFt tests_performanceFt.cpp)
-target_link_libraries(TestPerformanceFt gtest_main)
-target_include_directories(TestPerformanceFt PUBLIC ${Header})
-add_test(NAME TestPerformanceFt COMMAND TestPerformanceFt)
-
-add_executable(TestPerformanceSTL tests_performanceSTL.cpp)
-target_link_libraries(TestPerformanceSTL gtest_main)
-target_include_directories(TestPerformanceSTL PUBLIC ${Header})
-add_test(NAME TestPerformanceSTL COMMAND TestPerformanceSTL)
-
+add_executable(TestSTLContainers
+STL/tests_iterator.stl.cpp
+STL/tests_reverse_iterator.stl.cpp
+STL/tests_type_traits.stl.cpp
+STL/tests_algorithm.stl.cpp
+STL/tests_utility.stl.cpp
+STL/tests_vector.stl.cpp
+STL/tests_stack.stl.cpp
+STL/tests_map.stl.cpp
+STL/tests_set.stl.cpp
+tests_performanceSTL.cpp
+)
+target_link_libraries(TestSTLContainers gtest_main)
+target_include_directories(TestSTLContainers PUBLIC ${Header})
+add_test(NAME TestSTLContainers COMMAND TestSTLContainers)
 
 include(GoogleTest)
-gtest_discover_tests(TestIncludes TestMap TestVector TestStack TestSet
-TestPerformanceFt TestPerformanceSTL)
+gtest_discover_tests(TestFTContainers TestSTLContainers)

@@ -6,7 +6,7 @@
 namespace ft
 {
 
-	template<class T, class Compare = ft::less<T>, class Alloc = std::allocator<T>>
+	template< class T, class Compare = ft::less<T>, class Alloc = std::allocator<T> >
 	class set {
 
 		private:

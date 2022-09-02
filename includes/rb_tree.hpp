@@ -11,7 +11,7 @@
 namespace ft
 {
 
-	template< class Key, class T, class KeyOfValue, class Compare = ft::less<Key>, class Alloc = std::allocator<ft::pair< const Key, T>> >
+	template< class Key, class T, class KeyOfValue, class Compare = ft::less<Key>, class Alloc = std::allocator< ft::pair< const Key, T > > >
 	class rb_tree {
 
 		public:
@@ -525,7 +525,7 @@ namespace ft
 							z->parent->right = x;
 					}
 					if (y->color != RED) {
-						while (x != this->_root && (x == this->_nil || x->color == BLACK))
+						while (x != this->_root && (x == this->_nil || x->color == BLACK)) {
 							if (x == x_parent->left) {
 								ptr_node w = x_parent->right;
 								if (w->color == RED) {
@@ -583,6 +583,7 @@ namespace ft
 							}
 							if (x == this->_nil)
 								x->color = BLACK;
+						}
 					}
 					return y;
 				}
